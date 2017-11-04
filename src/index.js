@@ -4,17 +4,17 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
 import App from './App';
-import todos from './State/Reducers';
+import state from './State/Reducers';
 import { loadTodos, saveTodos } from './Utils/LocalStorage';
 
 const persistedTodos = loadTodos();
 const store = createStore(
-  todos,
+  state,
   persistedTodos
 );
 
 store.subscribe(() => {
-  saveTodos(store.getState());
+  saveTodos(store.getState().todos);
 });
 
 render(

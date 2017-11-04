@@ -5,9 +5,20 @@ import { deleteToDo } from '../State/Actions';
 import { toggleToDo } from '../State/Actions';
 import { loadTodos } from '../State/Actions';
 
+const getVisibleTodos = (todos, visibility) => {
+  switch(visibility) {
+    case 'SHOW_DONE':
+      return todos.filter(item => item.is_done);
+    case 'SHOW_UNDONE':
+      return todos.filter(item => !item.is_done);
+    default:
+      return todos;
+  }
+}
+
 const mapStateToProps = state => {
   return {
-    items: state
+    items: getVisibleTodos(state.todos, state.visibility)
   }
 }
 

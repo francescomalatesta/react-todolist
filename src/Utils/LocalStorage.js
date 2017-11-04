@@ -1,13 +1,19 @@
 export const loadTodos = () => {
   try {
-    const state = localStorage.getItem('todos');
-    if(state === null) {
-      return [];
+    const serializedTodos = localStorage.getItem('todos');
+    if(serializedTodos === null) {
+      return {
+        todos: []
+      };
     }
 
-    return JSON.parse(state);
+    return {
+      todos: JSON.parse(serializedTodos)
+    };
   } catch (error) {
-    return [];
+    return {
+      todos: []
+    };
   }
 };
 

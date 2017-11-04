@@ -31,3 +31,24 @@ export const toggleToDo = index => {
     }
   }
 };
+
+export const showAllTodos = () => {
+  return {
+    type: 'SHOW_ALL',
+    payload: {}
+  }
+};
+
+export const showOnlyUndoneTodos = () => {
+  return {
+    type: 'SHOW_UNDONE',
+    payload: {}
+  }
+};
+
+export const showOnlyDoneTodos = () => {
+  return {
+    type: 'SHOW_DONE',
+    payload: {}
+  }
+};
