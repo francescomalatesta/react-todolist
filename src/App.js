@@ -9,6 +9,8 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>My First React ToDo List</h1>
+        <hr />
         <TodoList />
         <hr />
         <AddTodoItemWidget />

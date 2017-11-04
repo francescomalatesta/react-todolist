@@ -4,6 +4,7 @@ class AddItemWidget extends Component {
   constructor(props) {
     super(props);
 
+    this.itemInput = undefined;
     this.state = {
       value: ''
     };
@@ -20,6 +21,7 @@ class AddItemWidget extends Component {
 
     this.props.onAddButtonClick(this.state.value);
     this.setState(() => ({value: ''}));
+    this.itemInput.focus();
   }
 
   _handleItemValueChange(event) {
@@ -29,9 +31,13 @@ class AddItemWidget extends Component {
 
   render() {
     return (
-      <div className="add-widget">
-        <input type="text" value={this.state.value} placeholder="Insert new item..." onChange={this._handleItemValueChange} />
-        <button type="button" onClick={this._handleAddButtonClick}>Add</button>
+      <div className="row">
+        <div className="col-md-10">
+          <input ref={(input) => { this.itemInput = input; }} autoFocus className="form-control" type="text" value={this.state.value} placeholder="Insert new item..." onChange={this._handleItemValueChange} />
+        </div>
+        <div className="col-md-2">
+          <button className="btn btn-success form-control" type="button" onClick={this._handleAddButtonClick}>Add</button>
+        </div>
       </div>
     );
   }
