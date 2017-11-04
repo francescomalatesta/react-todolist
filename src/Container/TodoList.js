@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import List from '../Presentational/List';
 import { deleteToDo } from '../State/Actions';
 import { toggleToDo } from '../State/Actions';
+import { loadTodos } from '../State/Actions';
 
 const mapStateToProps = state => {
   return {
@@ -17,6 +18,9 @@ const mapDispatchToProps = dispatch => {
     },
     onToggleButtonClick: index => {
       dispatch(toggleToDo(index));
+    },
+    onLoad: items => {
+      dispatch(loadTodos(items));
     }
   };
 };

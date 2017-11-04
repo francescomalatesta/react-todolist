@@ -5,8 +5,17 @@ import { createStore } from 'redux'
 
 import App from './App';
 import todos from './State/Reducers';
+import { loadTodos, saveTodos } from './Utils/LocalStorage';
 
-let store = createStore(todos)
+const persistedTodos = loadTodos();
+const store = createStore(
+  todos,
+  persistedTodos
+);
+
+store.subscribe(() => {
+  saveTodos(store.getState());
+});
 
 render(
   <Provider store={store}>
