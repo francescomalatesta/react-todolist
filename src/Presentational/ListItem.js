@@ -1,8 +1,14 @@
 import React from 'react';
 
-const ListItem = ({title, is_done}) => {
+const ListItem = ({title, isDone, index, onDeleteButtonClick, onToggleButtonClick}) => {
   return (
-    <li>{title} - <i>{is_done ? 'Fatto' : 'Da Fare'}</i></li>
+    <li>
+      {title}
+      <span style={{paddingLeft: 10}}>
+        <button type="button" onClick={() => onToggleButtonClick(index)}>Mark as {isDone === 1 ? '"To Do"' : '"Done"'}</button>
+        <button type="button" onClick={() => onDeleteButtonClick(index)}>Delete</button>
+      </span>
+    </li>
   );
 };
 

@@ -8,7 +8,7 @@ const renderEmptyList = () => {
   );
 };
 
-const List = ({items}) => {
+const List = ({items, onDeleteButtonClick, onToggleButtonClick}) => {
   if(items.length === 0) {
     return renderEmptyList();
   }
@@ -16,7 +16,14 @@ const List = ({items}) => {
   return (
     <ul>
       {items.map((item, index) => {
-        return <ListItem key={index} title={item.title} is_done={item.is_done} />
+        return <ListItem
+          index={index}
+          key={index}
+          title={item.title}
+          isDone={item.is_done}
+          onDeleteButtonClick={onDeleteButtonClick}
+          onToggleButtonClick={onToggleButtonClick}
+          />
       })}
     </ul>
   );

@@ -13,3 +13,21 @@ export const resetTodos = () => {
     payload: {}
   }
 }
+
+export const deleteToDo = index => {
+  return {
+    type: 'DELETE_TODO',
+    payload: {
+      index: index
+    }
+  }
+};
+
+export const toggleToDo = index => {
+  return {
+    type: 'TOGGLE_TODO',
+    payload: {
+      index: index
+    }
+  }
+};
